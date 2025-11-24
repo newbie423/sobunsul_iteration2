@@ -16,5 +16,12 @@ public class LoanDB
     {
         this.loanDB = new ArrayList<Loan>();
     }
-
+    
+    public void addLoan(Loan loan) {
+        this.loanDB.add(loan);
+    }
+    
+    public void deleteLoan(Loan loan) {
+        this.loanDB.remove(loan);
+    }
 }
