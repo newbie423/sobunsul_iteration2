@@ -39,10 +39,10 @@ public class BorrowerDB{
         }
         
         if(borrower.getBorrowerId() == borrowerId){
-            return false;
+            return true;
         }
         
-        return true;
+        return false;
     }
     public Borrower findBorrower(int borrowerId){
         Borrower borrower = this.borrowerDB.ceiling(new Borrower(borrowerId, ""));

@@ -25,10 +25,10 @@ public class BookDB{
         }
 
         if(book.getBookId() == bookId){
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     public Book findBook(int bookId){
