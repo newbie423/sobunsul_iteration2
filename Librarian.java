@@ -52,12 +52,30 @@ public class Librarian
         LA.returnOneBook(101); // 대출 된적 없음
         System.out.println();
         
-        System.out.println("=== 대출 가능 책 출력 ===");
+        System.out.println("====== 대출이 1건도 없는 경우 ======");
+        
+        System.out.println("=== 대출 가능 책 출력(대출이 1건도 없는 경우) ===");
+        LA.displayBookOnLoan();
+        System.out.println();
+        
+        System.out.println("=== 대출 중인 책 출력(대출이 1건도 없는 경우) ===");
+        LA.displayBookOffLoan();
+        System.out.println();
         
         System.out.println();
         
-        System.out.println("=== 대출 중인 책 출력 ===");
+        System.out.println("====== 대출 건수가 있는 경우 ======");
+        LA.loanOneBook(101, 1); // 101번 책을 1번 이용자가 대출
+        LA.loanOneBook(103, 2);
         
+        System.out.println("=== 대출 가능 책 출력(대출 건수가 있는 경우) ===");
+        LA.displayBookOnLoan();
+        System.out.println();
+        
+        System.out.println("=== 대출 가능 책 출력(대출 건수가 있는 경우) ===");
+        
+        System.out.println();
+        LA.displayBookOffLoan();
         System.out.println();
     }
 }
