@@ -21,11 +21,34 @@ public class LibraryApplication
     }
 
     public void registerOneBorrower(int borrowerID, String name) {
+        boolean borrowerIdExistCheckResult = this.borrowerDB.borrowerIdCheck(borrowerID);
         
+        if(borrowerIdExistCheckResult){
+            System.out.println("이용자 등록 실패 : " + "아이디 " + "\"" + borrowerID + "\"" + "이(가) 이미 존재하여 이용자를 등록에 사용할 수 없습니다");
+            return;
+        }
+
+        Borrower borrower = new Borrower(borrowerID, name);
+
+        this.borrowerDB.addBorrower(borrower);
+
+        System.out.println("이용자 등록 성공 : " + "\"" + borrower + "\"" + "이(가) 성공적으로 이용자 등록 되었습니다");
     }
     
-    public void registerOneBook(int bookID, String name, String author) {
-        
+    public void registerOneBook(int bookID, String title, String author) {
+        boolean bookIdExistCheckResult = this.bookDB.bookIdCheck(bookID);
+
+        if(bookIdExistCheckResult){
+            System.out.println("책 등록 실패 : " + "아이디 " + "\"" + bookID + "\"" + "이(가) 이미 존재하여 이용자를 등록에 사용할 수 없습니다");
+            return;
+        }
+
+        Book book = new Book(bookID, title, author);
+
+        this.bookDB.addBook(book);
+
+        System.out.println("책 등록 성공 : " + "\"" + book + "\"" + "이(가) 성공적으로 책 등록 되었습니다");
+    
     }
     
     public void loanOneBook(int bookID, int borrowerID) {
@@ -68,12 +91,14 @@ public class LibraryApplication
             System.out.println("반납할 책 : " + returnBook);
         } else {
             System.out.println("도서관에 수장된 책이 아님");
+            return;
         }
         
         Loan loan = returnBook.findConnectLoan();
         
         if(loan == null) {
             System.out.println("대출 중인 책이 아님");
+            return;
         }
         
         Borrower returnBorrower = loan.findConnectBorrower();
