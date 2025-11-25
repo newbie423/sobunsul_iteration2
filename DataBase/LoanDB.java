@@ -3,10 +3,10 @@ import Instunce.*;
 import java.util.*;
 
 /**
- * LoanDB 클래스의 설명을 작성하세요.
+ * LoanDB 클래스는 Loan 클래스로 생성한 객체들을 저장하기 위한 클래스 이다
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (정윤성)
+ * @version (2025.11.20)
  */
 public class LoanDB
 {

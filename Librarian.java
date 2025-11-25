@@ -29,7 +29,7 @@ public class Librarian
         System.out.println();
 
         System.out.println("=== 이용자 등록 예시(예외) ===");
-        LA.registerOneBook(3, "철학 기초", "김철학");
+        LA.registerOneBook(103, "철학 기초", "김철학");
         System.out.println();
         
         System.out.println("=== 대출 예시(정상) ===");
@@ -55,11 +55,11 @@ public class Librarian
         System.out.println("====== 대출이 1건도 없는 경우 ======");
         
         System.out.println("=== 대출 가능 책 출력(대출이 1건도 없는 경우) ===");
-        LA.displayBookOnLoan();
+        LA.displayBookOffLoan();
         System.out.println();
         
         System.out.println("=== 대출 중인 책 출력(대출이 1건도 없는 경우) ===");
-        LA.displayBookOffLoan();
+        LA.displayBookOnLoan();
         System.out.println();
         
         System.out.println();
@@ -69,13 +69,13 @@ public class Librarian
         LA.loanOneBook(103, 2);
         
         System.out.println("=== 대출 가능 책 출력(대출 건수가 있는 경우) ===");
-        LA.displayBookOnLoan();
+        LA.displayBookOffLoan();
         System.out.println();
         
         System.out.println("=== 대출 가능 책 출력(대출 건수가 있는 경우) ===");
         
         System.out.println();
-        LA.displayBookOffLoan();
+        LA.displayBookOnLoan();
         System.out.println();
     }
 }

@@ -2,10 +2,10 @@ package Instunce;
 import java.util.*;
 
 /**
- * Loan 클래스의 설명을 작성하세요.
+ * Loan 클래스는 Borrower와 Book간의 대출 관계를 형성하는데 사용하는 객체를 생성하는데 사용되는 클래스 이다.
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (정윤성)
+ * @version (2025.11.20)
  */
 public class Loan
 {
