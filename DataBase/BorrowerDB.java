@@ -15,21 +15,21 @@ public class BorrowerDB{
 
     // 생성자에서는 초기화를 진행한다
     public BorrowerDB(){
-        this.borrowerDB = new TreeSet<Borrower>(Comparator.comparingInt(Borrower::getBorrowerId));
+        this.borrowerDB = new TreeSet<Borrower>(Comparator.comparingInt(Borrower::getBorrowerID));
     }
 
     // 이용자를 추가하는데 사용되는 메소드 이다
     public void addBorrower(Borrower borrower){ this.borrowerDB.add(borrower); }
 
     // 이용자의 아이디가 존재하는지 확인하는 메소드이다
-    public boolean borrowerIdCheck(int borrowerId){
-        Borrower borrower =  this.borrowerDB.ceiling(new Borrower(borrowerId, ""));
+    public boolean borrowerIDCheck(int borrowerID){
+        Borrower borrower =  this.borrowerDB.ceiling(new Borrower(borrowerID, ""));
 
         if(borrower == null){
             return false;
         }
 
-        if(borrower.getBorrowerId() == borrowerId){
+        if(borrower.getBorrowerID() == borrowerID){
             return true;
         }
 
@@ -37,14 +37,14 @@ public class BorrowerDB{
     }
 
     // 아이디에 해당되는 이용자 객체를 반환하는 메소드이다
-    public Borrower findBorrower(int borrowerId){
-        Borrower borrower = this.borrowerDB.ceiling(new Borrower(borrowerId, ""));
+    public Borrower findBorrower(int borrowerID){
+        Borrower borrower = this.borrowerDB.ceiling(new Borrower(borrowerID, ""));
 
         if(borrower == null){
             return null;
         }
 
-        if(borrower.getBorrowerId() == borrowerId){
+        if(borrower.getBorrowerID() == borrowerID){
             return borrower;
         }
 

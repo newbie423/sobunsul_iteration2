@@ -21,14 +21,20 @@ public class Librarian
         LA.registerOneBook(101, "자바 프로그래밍", "김자바");
         LA.registerOneBook(102, "파이썬 프로그래밍", "김파이썬");
         LA.registerOneBook(103, "C++ 프로그래밍", "김씨플");
-        LA.registerOneBook(104, "객체 지향 설계", "김설계");
+        LA.registerOneBook(105, "객체 지향 설계", "김설계");
+        LA.registerOneBook(106, "", "");
+        LA.registerOneBook(107, "", "");
+        LA.registerOneBook(108, "", "");
+        LA.registerOneBook(109, "", "");
+        LA.registerOneBook(110, "", "");
+        LA.registerOneBook(111, "", "");
         System.out.println();
 
         System.out.println("=== 이용자 등록 예시(예외) ===");
         LA.registerOneBorrower(1, "나길동");
         System.out.println();
 
-        System.out.println("=== 이용자 등록 예시(예외) ===");
+        System.out.println("=== 책 등록 예시(예외) ===");
         LA.registerOneBook(103, "철학 기초", "김철학");
         System.out.println();
         
@@ -53,29 +59,31 @@ public class Librarian
         System.out.println();
         
         System.out.println("====== 대출이 1건도 없는 경우 ======");
-        
-        System.out.println("=== 대출 가능 책 출력(대출이 1건도 없는 경우) ===");
-        LA.displayBookOffLoan();
         System.out.println();
         
         System.out.println("=== 대출 중인 책 출력(대출이 1건도 없는 경우) ===");
         LA.displayBookOnLoan();
         System.out.println();
         
+        System.out.println("=== 대출 가능 책 출력(대출이 1건도 없는 경우) ===");
+        LA.displayBookOffLoan();
+        System.out.println();
+        
         System.out.println();
         
         System.out.println("====== 대출 건수가 있는 경우 ======");
         LA.loanOneBook(101, 1); // 101번 책을 1번 이용자가 대출
-        LA.loanOneBook(103, 2);
+        LA.loanOneBook(102, 1);
+        System.out.println();
+        
+        System.out.println("=== 대출 중인 책 출력(대출 건수가 있는 경우) ===");
+        LA.displayBookOnLoan();
+        System.out.println();
         
         System.out.println("=== 대출 가능 책 출력(대출 건수가 있는 경우) ===");
         LA.displayBookOffLoan();
         System.out.println();
         
-        System.out.println("=== 대출 가능 책 출력(대출 건수가 있는 경우) ===");
-        
-        System.out.println();
-        LA.displayBookOnLoan();
         System.out.println();
     }
 }

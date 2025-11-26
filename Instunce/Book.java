@@ -7,19 +7,19 @@ package Instunce;
  * @version (2025.11.20)
  */
 public class Book{
-    int bookId;
+    int bookID;
     String title = null;
     String author = null;
     
     Loan loan = null;
     
-    public Book(int bookId, String title, String author){
-        this.bookId = bookId;
+    public Book(int bookID, String title, String author){
+        this.bookID = bookID;
         this.title = title;
         this.author = author;
     }
     
-    public int getBookId(){ return this.bookId; }
+    public int getBookID(){ return this.bookID; }
     
     // 책이 대출 될 수 있는 상태인지 확인하는 메소드이다
     public boolean loanAbleCheck(){
@@ -42,6 +42,6 @@ public class Book{
     }
     
     public String toString(){
-        return this.bookId + " " + this.title + " " + this.author;
+        return this.bookID + " " + this.title + " " + this.author;
     }
 }

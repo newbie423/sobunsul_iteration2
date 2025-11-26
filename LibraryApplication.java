@@ -36,7 +36,7 @@ public class LibraryApplication
      * @return 없음
      */
     public void registerOneBorrower(int borrowerID, String name) {
-        boolean borrowerIdExistCheckResult = this.borrowerDB.borrowerIdCheck(borrowerID);
+        boolean borrowerIdExistCheckResult = this.borrowerDB.borrowerIDCheck(borrowerID);
 
         if(borrowerIdExistCheckResult){
             System.out.println("이용자 등록 실패 : " + "아이디 " + "\"" + borrowerID + "\"" + "이(가) 이미 존재하여 이용자를 등록에 사용할 수 없습니다");
@@ -60,7 +60,7 @@ public class LibraryApplication
      * @return 없음
      */
     public void registerOneBook(int bookID, String title, String author) {
-        boolean bookIdExistCheckResult = this.bookDB.bookIdCheck(bookID);
+        boolean bookIdExistCheckResult = this.bookDB.bookIDCheck(bookID);
 
         if(bookIdExistCheckResult){
             System.out.println("책 등록 실패 : " + "아이디 " + "\"" + bookID + "\"" + "이(가) 이미 존재하여 이용자를 등록에 사용할 수 없습니다");
@@ -153,24 +153,70 @@ public class LibraryApplication
     }
 
     /*
-     * 이 메소드는 책 1권을 등록하는 메소드이다
+     * 이 메소드는 대출 중인 모든 책을 표시하는 메소드이다
      * 
      * @param 없음
      * 
      * @return 없음
      */
     public void displayBookOnLoan() {
+        if(this.bookDB.emptyCheck()){
+            System.out.println("책DB에 등록된 책이 없습니다");
+            return;
+        }
 
+        boolean bookPrinted = false;
+
+        while(true){
+            Book book = this.bookDB.getOneBook();
+
+            if(book == null){
+                break;
+            }
+
+            // 이미 대출이 되어 있다고 한다면 대출 가능 여부가 false가 됨
+            if(book.loanAbleCheck() == false){
+                bookPrinted = true;
+                System.out.println(book);
+            }
+        }
+        
+        if(bookPrinted == false){
+            System.out.println("대출 중인 책이 한권도 없습니다");
+        }
     }
 
     /*
-     * 이 메소드는 책 1권을 등록하는 메소드이다
+     * 이 메소드는 대출 가능한 모든 책을 표시하는 메소드이다
      * 
      * @param 없음
      * 
      * @return 없음
      */
     public void displayBookOffLoan() {
+        if(this.bookDB.emptyCheck()){
+            System.out.println("책DB에 등록된 책이 없습니다");
+            return;
+        }
 
+        boolean bookPrinted = false;
+        
+        while(true){
+            Book book = this.bookDB.getOneBook();
+
+            if(book == null){
+                break;
+            }
+
+            // 대출이 되어 있지 않다고 한다면 대출 가능 여부가 true가 됨
+            if(book.loanAbleCheck()){
+                bookPrinted = true;
+                System.out.println(book);
+            }
+        }
+        
+        if(bookPrinted == false){
+            System.out.println("대출 가능한 책이 한권도 없습니다");
+        }
     }
 }

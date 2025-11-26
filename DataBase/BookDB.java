@@ -11,21 +11,21 @@ import Instunce.*;
  * @version (2025.11.20)
  */
 public class BookDB{
-    private TreeSet<Book> bookDB = new TreeSet<Book>(Comparator.comparingInt(Book::getBookId));
+    private TreeSet<Book> bookDB = new TreeSet<Book>(Comparator.comparingInt(Book::getBookID));
 
     public BookDB(){}
 
     public void addBook(Book book){ this.bookDB.add(book); }
 
     // 책의 아이디가 존재하는지 확인하는 메소드이다
-    public boolean bookIdCheck(int bookId){
-        Book book =  this.bookDB.ceiling(new Book(bookId, "", ""));
+    public boolean bookIDCheck(int bookID){
+        Book book =  this.bookDB.ceiling(new Book(bookID, "", ""));
 
         if(book == null){
             return false;
         }
 
-        if(book.getBookId() == bookId){
+        if(book.getBookID() == bookID){
             return true;
         }
 
@@ -33,14 +33,14 @@ public class BookDB{
     }
 
     // 아이디에 해당되는 책 객체를 반환하는 메소드이다
-    public Book findBook(int bookId){
-        Book book = this.bookDB.ceiling(new Book(bookId, "", ""));
+    public Book findBook(int bookID){
+        Book book = this.bookDB.ceiling(new Book(bookID, "", ""));
 
         if(book == null){
             return null;
         }
 
-        if(book.getBookId() == bookId){
+        if(book.getBookID() == bookID){
             return book;
         }
 
@@ -52,7 +52,22 @@ public class BookDB{
         return this.bookDB.isEmpty();
     }
 
-    public TreeSet<Book> getBookDB(){
-        return this.bookDB;
+    private Iterator<Book> it = null;
+    // 책DB의 iterator를 생성한뒤 매번 호출될 때마다 다음요소를 전달하며,
+    // 모든 책에 대한 순회가 끝난 경우 iterator를 다시 초기화 하는 메소드이다
+    public Book getOneBook(){
+        if(this.it == null){ // iterator가 초기화 되어 있으면 새롭게 생성
+            this.it = this.bookDB.iterator();
+        }
+        
+        Book book = null;
+        
+        if(it.hasNext()){ // 다음 책이 있을때만, 다음책을 받아오기
+            book = this.it.next();
+        }else{ // 
+            this.it = null; // 다음 책이 없으면 현재 iterator에 대한 모든 책을 다 순회한 것이므로 다음번 사용을 위해 초기화
+        }
+        
+        return book;
     }
 }
