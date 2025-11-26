@@ -36,9 +36,7 @@ public class LibraryApplication
      * @return 없음
      */
     public void registerOneBorrower(int borrowerID, String name) {
-        boolean borrowerIdExistCheckResult = this.borrowerDB.borrowerIDCheck(borrowerID);
-
-        if(borrowerIdExistCheckResult){
+        if(this.borrowerDB.borrowerIDCheck(borrowerID)){
             System.out.println("이용자 등록 실패 : " + "아이디 " + "\"" + borrowerID + "\"" + "이(가) 이미 존재하여 이용자를 등록에 사용할 수 없습니다");
             return;
         }
@@ -60,9 +58,7 @@ public class LibraryApplication
      * @return 없음
      */
     public void registerOneBook(int bookID, String title, String author) {
-        boolean bookIdExistCheckResult = this.bookDB.bookIDCheck(bookID);
-
-        if(bookIdExistCheckResult){
+        if(this.bookDB.bookIDCheck(bookID)){
             System.out.println("책 등록 실패 : " + "아이디 " + "\"" + bookID + "\"" + "이(가) 이미 존재하여 이용자를 등록에 사용할 수 없습니다");
             return;
         }
@@ -100,10 +96,13 @@ public class LibraryApplication
             System.out.println("책이나 이용자가 대출가능");
         } else if(bookCheck == false) {
             System.out.println(loanBook + "는 대출불가");
+            return;
         } else if(borrowerCheck == false) {
             System.out.println(loanBorrower + "는 대출불가");
+            return;
         } else {
             System.out.println(loanBook +"와 " + loanBorrower + "은 대출불가");
+            return;
         }
 
         Loan loan = new Loan(loanBorrower, loanBook);
@@ -180,7 +179,7 @@ public class LibraryApplication
                 System.out.println(book);
             }
         }
-        
+
         if(bookPrinted == false){
             System.out.println("대출 중인 책이 한권도 없습니다");
         }
@@ -200,7 +199,7 @@ public class LibraryApplication
         }
 
         boolean bookPrinted = false;
-        
+
         while(true){
             Book book = this.bookDB.getOneBook();
 
@@ -214,7 +213,7 @@ public class LibraryApplication
                 System.out.println(book);
             }
         }
-        
+
         if(bookPrinted == false){
             System.out.println("대출 가능한 책이 한권도 없습니다");
         }
